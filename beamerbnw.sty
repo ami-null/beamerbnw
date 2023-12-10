@@ -1,3 +1,5 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerbnw}[Beamer BnW]
 \RequirePackage{tcolorbox}
 
 % define package options
@@ -114,6 +116,15 @@
             \rule{\linewidth}{0.5pt}
             \par
             #2    % content
+        }
+    }
+}
+
+% same as above, but without title
+\newcommand{\fblocknt}[1]{
+    \framebox{
+        \parbox{0.95\linewidth}{
+            #1    % content
         }
     }
 }
