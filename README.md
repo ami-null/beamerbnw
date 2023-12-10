@@ -1,0 +1,2 @@
+# beamerbnw
+ Minimal Beamer template

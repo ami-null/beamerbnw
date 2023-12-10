@@ -1,0 +1,81 @@
+{
+    \setbeamertemplate{footline}{}
+    \addtocounter{framenumber}{-2}    % not counting the title and outline pages in frame numbers
+    
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}{Outline}
+        \tableofcontents[subsectionstyle=hide]
+    \end{frame}
+}
+
+
+\section{First section}
+
+
+\begin{frame}{Section 1 Frame 1}{Frame subtitle}
+    Test slide
+\end{frame}
+
+
+\begin{frame}[fragile]{Beamer block}
+	\begin{verbatim}
+\begin{block}{Title}
+    ...
+\end{block}
+    \end{verbatim}
+
+    \begin{block}{Title}
+        \begin{itemize}
+            \item item 1
+            \item item 2
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{``Block" using tcolorbox}
+	\begin{verbatim}
+\begin{tcblock}{Title}
+    ...
+\end{tcblock}
+    \end{verbatim}
+
+    \begin{tcblock}{Title}
+        \begin{itemize}
+            \item item 1
+            \item item 2
+        \end{itemize}
+    \end{tcblock}
+\end{frame}
+
+
+\begin{frame}[fragile]{``Block" using framebox and parbox}
+    \begin{verbatim}
+\fblock{Title}{
+    ...
+}
+    \end{verbatim}
+	
+    \fblock{Title}{
+        \begin{itemize}
+            \item item 1
+            \item item 2
+        \end{itemize}
+    }
+\end{frame}
+
+
+\section{Second section}
+
+
+\begin{frame}{Section 2 Frame 1}
+    another test frame
+\end{frame}
+
+
+\begin{frame}{Section 2 Frame 2}
+    yet another test frame
+\end{frame}

@@ -1,0 +1,131 @@
+\RequirePackage{tcolorbox}
+
+% define package options
+\newcommand{\beamerbnw@sec}{page}
+\DeclareOptionBeamer{sec}{\renewcommand{\beamerbnw@sec}{#1}}
+\ProcessOptionsBeamer\relax
+
+% string to which the arguments of the package option are compared:
+\newcommand{\beamerbnw@strPage}{page}
+\newcommand{\beamerbnw@strFooter}{footer}
+
+% template for section page
+% it is used if the package option `sec` is set to `page` (default)
+\setbeamertemplate{section page}{
+    \begin{centering}
+    	\begin{beamercolorbox}[sep=12pt,center,shadow=false,rounded=false]{section title}
+    		\usebeamerfont{section title}\insertsection\par
+    	\end{beamercolorbox}
+    \end{centering}
+}
+
+% THE BELOW LINE SETS THE FOOTER OF EACH FRAME
+% BUT IT IS MODIFIED IF SECTION NAME IS WANTED IN FOOTER
+% SEE THE ELSE IF CLAUSE BELOW
+\setbeamertemplate{footline}[frame number]
+
+\ifx\beamerbnw@sec\beamerbnw@strPage
+    % sec specified with value "page"
+    \AtBeginSection{
+        {
+            \addtocounter{framenumber}{-1}
+            \setbeamertemplate{footline}{}
+            \begin{frame}
+                \sectionpage
+            \end{frame}
+        }
+	}
+\else
+    \ifx\beamerbnw@sec\beamerbnw@strFooter
+        % sec specified with value "footer"
+        \makeatletter
+        \setbeamertemplate{footline}
+        {
+            \leavevmode%
+            \hbox{%
+        
+            \begin{beamercolorbox}[wd=0.8\paperwidth, ht=2.25ex, dp=1ex, left]{author in head/foot}%
+                \usebeamerfont{author in head/foot} \hspace*{1ex} \insertsection \hfill
+            \end{beamercolorbox}%
+            
+            \begin{beamercolorbox}[wd=0.2\paperwidth, ht=2.25ex, dp=1ex, right]{date in head/foot}%
+                \usebeamerfont{date in head/foot}
+                \insertframenumber{}/\inserttotalframenumber \hspace*{2ex} 
+            \end{beamercolorbox}}%
+            
+            \vskip0pt%
+        }
+        \makeatother
+    \else
+        % sec specified with value \beamerbnw@sec (other than "page" or "footer") or not specified
+    \fi
+\fi
+
+
+\usecolortheme{dove}
+\setbeamercolor{caption name}{fg=normal text.fg}
+% \usecolortheme{seagull}
+
+\usefonttheme{serif}
+\setbeamerfont{title}{series=\bfseries,parent=structure}
+\setbeamerfont{frametitle}{series=\bfseries,parent=structure}
+\setbeamerfont{framesubtitle}{series=\bfseries,parent=structure}
+
+% setting up template for the frame title:
+\makeatletter
+\setbeamertemplate{frametitle}{%
+    \vskip-.05\baselineskip
+    \usebeamerfont{frametitle}\insertframetitle\strut
+    \ifx\insertframesubtitle\@empty
+    \else
+        \par
+        \vskip-.1\baselineskip
+        \usebeamerfont{framesubtitle}\insertframesubtitle\strut%
+    \fi 
+    \vskip-.1\baselineskip%
+    \leaders\vrule width \paperwidth\vskip0.4pt%
+    \vskip0pt%
+    \nointerlineskip
+}
+\makeatother
+
+
+\setbeamercovered{transparent}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamertemplate{frametitle continuation}[from second][(cont.)]
+\beamertemplatenavigationsymbolsempty
+
+%%% ALL BLOCKS RELATED CODES ARE BELOW
+% the three lines below sets template for beamer's built-in blocks
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor*{block title}{fg=black,bg=black!12}
+\setbeamercolor*{block body}{fg=black,bg=black!5}
+
+% this defines a new "block" using framebox and parbox:
+\newcommand{\fblock}[2]{
+    \framebox{
+        \parbox{0.95\linewidth}{
+            {\bfseries{#1}}    % title
+            \par
+            \vspace{-0.7\baselineskip}
+            \rule{\linewidth}{0.5pt}
+            \par
+            #2    % content
+        }
+    }
+}
+
+% this defines a new "block" using tcolorbox
+\newtcolorbox{tcblock}[2][]{
+            colback = white,
+            colframe = black,
+            colbacktitle = white,
+            coltitle = black,
+            boxrule = 0.5pt,
+            arc = 2.5pt,
+            outer arc = 2.5pt,
+            title = \bfseries{#2}
+}
