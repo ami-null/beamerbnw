@@ -3,7 +3,8 @@
 \RequirePackage{tcolorbox}
 
 % define package options
-\newcommand{\beamerbnw@sec}{page}
+% \newcommand{\beamerbnw@sec}{page}
+\newcommand{\beamerbnw@sec}{\empty}
 \DeclareOptionBeamer{sec}{\renewcommand{\beamerbnw@sec}{#1}}
 \ProcessOptionsBeamer\relax
 
@@ -26,12 +27,11 @@
 % SEE THE ELSE IF CLAUSE BELOW
 \setbeamertemplate{footline}[frame number]
 
+
 \ifx\beamerbnw@sec\beamerbnw@strPage
     % sec specified with value "page"
     \AtBeginSection{
         {
-            %\addtocounter{framenumber}{-1}
-            %\setbeamertemplate{footline}{}
             \begin{frame}[noframenumbering, plain]
                 \sectionpage
             \end{frame}
@@ -60,6 +60,7 @@
         \makeatother
     \else
         % sec specified with value \beamerbnw@sec (other than "page" or "footer") or not specified
+		% so, do nothing
     \fi
 \fi
 

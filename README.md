@@ -4,9 +4,11 @@
 
 ## Usage
 
-- `\usepackage[sec=page]{beamerbnw}` for section pages (`page` is the default and can be ommited)
+- `\usepackage{beamerbnw}` to load the template.
 
-- `\usepackage[sec=footer]{beamerbnw}` for section name in footer
+- `\usepackage[sec=page]{beamerbnw}` for section pages.
+
+- `\usepackage[sec=footer]{beamerbnw}` for section names in footer
 
 ### Blocks
 
