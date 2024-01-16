@@ -13,7 +13,7 @@
 \newcommand{\beamerbnw@strFooter}{footer}
 
 % template for section page
-% it is used if the package option `sec` is set to `page` (default)
+% it is used if the package option `sec` is set to `page`
 \setbeamertemplate{section page}{
     \begin{centering}
     	\begin{beamercolorbox}[sep=12pt,center,shadow=false,rounded=false]{section title}
@@ -30,13 +30,25 @@
 
 \ifx\beamerbnw@sec\beamerbnw@strPage
     % sec specified with value "page"
-    \AtBeginSection{
-        {
-            \begin{frame}[noframenumbering, plain]
-                \sectionpage
-            \end{frame}
-        }
-	}
+ %    \AtBeginSection{
+ %        {
+ %            \begin{frame}[noframenumbering, plain]
+ %                \sectionpage
+ %            \end{frame}
+ %        }
+	% }
+    \AtBeginSection[]{
+    {
+        \begin{frame}[noframenumbering, plain]
+            \vfill
+            \centering
+            \begin{beamercolorbox}[sep=12pt,center,shadow=false,rounded=false]{section title}
+                \usebeamerfont{section title}\insertsectionhead\par%
+            \end{beamercolorbox}
+            \vfill
+        \end{frame}
+    }
+}
 \else
     \ifx\beamerbnw@sec\beamerbnw@strFooter
         % sec specified with value "footer"
