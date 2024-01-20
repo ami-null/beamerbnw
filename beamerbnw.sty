@@ -64,7 +64,8 @@
             
             \begin{beamercolorbox}[wd=0.2\paperwidth, ht=2.25ex, dp=1ex, right]{date in head/foot}%
                 \usebeamerfont{date in head/foot}
-                \insertframenumber{}/\inserttotalframenumber \hspace*{2ex} 
+				\setbeamercolor{page number in head/foot}{fg=gray}
+                \textcolor{gray}{\insertframenumber{}/\inserttotalframenumber \hspace*{2ex} }
             \end{beamercolorbox}}%
             
             \vskip0pt%
