@@ -6,6 +6,24 @@
 
 \usepackage{bookmark}
 
+\hypersetup{
+    colorlinks=true,
+    linkcolor={black},
+    filecolor={blue},
+    citecolor={gray!110},
+    urlcolor={gray!110},
+    pdfcreator={Shazid}
+}
+
+\let\oldcite=\cite
+\renewcommand{\cite}[1]{\textcolor{gray!110}{\oldcite{#1}}}
+
+\let\oldcitet=\citet
+\renewcommand{\citet}[1]{\textcolor{gray!110}{\oldcitet{#1}}}
+
+\let\oldcitep=\citep
+\renewcommand{\citep}[1]{\textcolor{gray!110}{\oldcitep{#1}}}
+
 \usepackage[sec=footer]{beamerbnw}
 
 \title{Beamer BnW}
